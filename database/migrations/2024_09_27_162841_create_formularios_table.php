@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('formulario', function (Blueprint $table) {
+        Schema::create('formularios', function (Blueprint $table) {
             $table->id();
-            $table->string('tipo_formulario');
+            $table->string('nombre');
+            $table->json('preguntas');
             $table->text('descripcion')->nullable();
             $table->timestamps();
         });
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('formulario');
+        Schema::dropIfExists('formularios');
     }
 };

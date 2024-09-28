@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('formularios', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('nombre')->unique(); //Deberia ser unico para evitar repeticion
             $table->json('preguntas');
             $table->text('descripcion')->nullable();
             $table->timestamps();

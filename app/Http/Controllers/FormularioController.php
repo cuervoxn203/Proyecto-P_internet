@@ -92,6 +92,7 @@ class FormularioController extends Controller
      */
     public function destroy(Formulario $formulario)
     {
-        //
+        $formulario->delete();
+        return redirect()->route('formularios.index');
     }
 }

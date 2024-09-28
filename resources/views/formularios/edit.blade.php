@@ -9,7 +9,7 @@
 <body>
     <h1>Editar Formulario</h1>
 
-    <form action="{{ route('formularios.edit', $formulario->id) }}" method="POST" id="form-editar">
+    <form action="{{ route('formularios.update', $formulario->id) }}" method="POST" id="form-editar">
         @csrf
         @method('PATCH')
 

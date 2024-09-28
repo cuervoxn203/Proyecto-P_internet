@@ -63,7 +63,7 @@ class FormularioController extends Controller
      */
     public function edit(Formulario $formulario)
     {
-        //
+        return view('formularios.edit', compact('formulario'));
     }
 
     /**
@@ -71,7 +71,20 @@ class FormularioController extends Controller
      */
     public function update(Request $request, Formulario $formulario)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'descripcion' => 'nullable|string',
+            'preguntas' => 'required|array', 
+            'preguntas.*' => 'required|string|max:255', 
+        ]);
+
+        // Actualiza el formulario
+        $formulario->nombre = $request->nombre;
+        $formulario->descripcion = $request->descripcion;
+        $formulario->preguntas = json_encode($request->preguntas); // Guardar las preguntas como un JSON
+        $formulario->save();
+
+        return redirect()->route('formularios.show', $formulario);
     }
 
     /**

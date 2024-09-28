@@ -8,7 +8,8 @@
 </head>
 <body>
     <h1>Crear Nuevo Formulario</h1>
-
+    <a href="{{ route('formularios.index') }}" class="btn btn-secondary">Volver a la Lista de Formularios</a>
+    
     <form action="{{ route('formularios.store') }}" method="POST" id="form-crear">
         @csrf
 

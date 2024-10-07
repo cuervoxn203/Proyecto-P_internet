@@ -22,3 +22,12 @@ Route::get('/', function () {
 Route::resource('profesional', ProfesionalController::class)->parameters([
     'profesional' => 'profesional'
 ]);
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

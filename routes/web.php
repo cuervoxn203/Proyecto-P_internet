@@ -26,11 +26,7 @@ Route::put('/terapeutas/{id}', [TerapeutaController::class, 'update'])->name('te
 Route::delete('/terapeutas/{id}', [TerapeutaController::class, 'destroy'])->name('terapeutas.destroy');
 Route::get('/terapeutas', [TerapeutaController::class, 'index'])->name('terapeutas.index');
 
-// Rutas de ProfesionalController y FormularioController
-Route::resource('profesional', ProfesionalController::class)->parameters([
-    'profesional' => 'profesional'
-]);
-Route::resource('formularios', FormularioController::class)->parameters(['formularios' => 'formulario']);
+
 
 // Middleware de autenticación y ruta al dashboard
 Route::middleware([

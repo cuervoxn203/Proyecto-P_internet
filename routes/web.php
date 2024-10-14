@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\FormularioController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfesionalController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +20,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('profesional', ProfesionalController::class)->parameters([
+    'profesional' => 'profesional'
+]);
 Route::resource('formularios', FormularioController::class)->parameters(['formularios' => 'formulario']);
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
+

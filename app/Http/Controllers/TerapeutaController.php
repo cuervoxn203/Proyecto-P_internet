@@ -71,12 +71,12 @@ class TerapeutaController extends Controller
     /**
      * Mostrar el formulario para editar un terapeuta existente.
      */
-    public function edit(Terapeuta $terapeuta)
+    public function edit($id)
     {
-        // Retornar la vista con los datos del terapeuta para editar
-        return view('terapeutas.edit', compact('terapeuta'));
+        $terapeuta = Terapeuta::findOrFail($id); // Esto cargará el terapeuta correspondiente
+        return view('terapeutas.edit', compact('terapeuta')); // Asegúrate de que la vista edit exista
     }
-
+    
     /**
      * Actualizar un terapeuta existente en la base de datos.
      */

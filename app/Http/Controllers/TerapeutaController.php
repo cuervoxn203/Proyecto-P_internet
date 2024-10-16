@@ -31,33 +31,28 @@ class TerapeutaController extends Controller
      * Almacenar un nuevo terapeuta en la base de datos.
      */
     public function store(Request $request)
-{
-    // Validar los datos
-    $validated = $request->validate([
-        'nombre' => [
-            'required',
-            'regex:/^[\pL\s]+$/u', // Permite letras y espacios, incluyendo caracteres Unicode
-            'max:255',
-        ],
-        'email' => 'required|email|unique:terapeutas',
-        'especialidad' => [
-            'required',
-            'regex:/^[\pL\s]+$/u', // Permite letras y espacios, incluyendo caracteres Unicode
-            'max:255',
-        ],
-        'telefono' => 'required|numeric|digits_between:7,15',
-    ], [
-        'nombre.regex' => 'El campo nombre solo puede contener letras y espacios.',
-        'especialidad.regex' => 'El campo especialidad solo puede contener letras y espacios.',
-    ]);
-
-    // Guardar los datos en la base de datos
-    Terapeuta::create($validated);
-
-    // Redirigir con un mensaje de éxito
-    return redirect()->route('terapeutas.index')->with('success', 'Terapeuta creado exitosamente');
-}
-
+    {
+        // Validar los datos
+        $validated = $request->validate([
+            'nombre' => 'required|string|max:255|regex:/^[\pL\s]+$/u',
+            'email' => 'required|email|unique:terapeutas',
+            'especialidad' => 'required|string|max:255|regex:/^[\pL\s]+$/u',
+            'telefono' => 'required|numeric|digits:10', // Cambiado a digits:10
+        ], [
+            'nombre.regex' => 'El campo nombre solo puede contener letras y espacios.',
+            'especialidad.regex' => 'El campo especialidad solo puede contener letras y espacios.',
+            'telefono.required' => 'El campo teléfono es obligatorio.',
+            'telefono.numeric' => 'El campo teléfono debe contener solo números.',
+            'telefono.digits' => 'El campo teléfono debe tener exactamente 10 dígitos.', // Mensaje actualizado
+        ]);
+    
+        // Guardar los datos en la base de datos
+        Terapeuta::create($validated);
+    
+        // Redirigir con un mensaje de éxito
+        return redirect()->route('terapeutas.index')->with('success', 'Terapeuta creado exitosamente');
+    }
+    
 
     /**
      * Mostrar un terapeuta específico.
@@ -95,18 +90,22 @@ class TerapeutaController extends Controller
                 'regex:/^[\pL\s]+$/u', // Permite letras y espacios, incluyendo caracteres Unicode
                 'max:255',
             ],
-            'telefono' => 'required|numeric|digits_between:7,15',
+            'telefono' => 'required|numeric|digits:10', // Cambiado a digits:10
         ], [
             'nombre.regex' => 'El campo nombre solo puede contener letras y espacios.',
             'especialidad.regex' => 'El campo especialidad solo puede contener letras y espacios.',
+            'telefono.required' => 'El campo teléfono es obligatorio.',
+            'telefono.numeric' => 'El campo teléfono debe contener solo números.',
+            'telefono.digits' => 'El campo teléfono debe tener exactamente 10 dígitos.',
         ]);
-    
+        
         // Actualizar los datos en la base de datos
         $terapeuta->update($validated);
-    
-        // Redirigir a la vista de edición con un mensaje de éxito
-        return redirect()->route('terapeutas.edit', $terapeuta)->with('success', 'Terapeuta actualizado exitosamente');
+        
+        // Redirigir a la vista de índice con un mensaje de éxito
+        return redirect()->route('terapeutas.index')->with('success', 'Terapeuta actualizado exitosamente');
     }
+    
     
 
     /**

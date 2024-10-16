@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Crear Formulario</title>
-    <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logos/favicon.png') }}" />
     <link rel="stylesheet" href="../assets/css/styles.min.css" />
 </head>
 
@@ -39,10 +39,8 @@
                     <h6 class="fw-bold mb-3">Preguntas</h6>
                     <div id="preguntas-container">
                         <div class="mb-3 d-flex align-items-center pregunta-item">
-                            <input type="text" name="preguntas[]" id="pregunta_1" class="form-control me-2" placeholder="Escribe una pregunta" required>
-                            <div>
-                                <button type="button" class="btn btn-outline-danger d-block btn-eliminar mt-3">Eliminar</button>
-                            </div>
+                            <input type="text" name="preguntas[]" id="pregunta_1" class="form-control" placeholder="Escribe una pregunta" required>
+                            <button type="button" class="btn btn-outline-danger ms-2 btn-eliminar">Eliminar</button>
                         </div>
                     </div>
 

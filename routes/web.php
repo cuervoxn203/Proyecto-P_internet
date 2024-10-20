@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\FormularioController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfesionalController;
+use App\Http\Controllers\TerapeutaController;
+
+
 
 
 /*
@@ -20,9 +22,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('profesional', ProfesionalController::class)->parameters([
-    'profesional' => 'profesional'
-]);
+Route::resource('terapeutas', TerapeutaController::class);
+
 Route::resource('formularios', FormularioController::class)->parameters(['formularios' => 'formulario']);
 Route::middleware([
     'auth:sanctum',

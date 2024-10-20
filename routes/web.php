@@ -17,14 +17,14 @@ use App\Http\Controllers\TerapeutaController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::resource('terapeutas', TerapeutaController::class);
 
 Route::resource('formularios', FormularioController::class)->parameters(['formularios' => 'formulario']);
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

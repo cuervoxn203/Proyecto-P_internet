@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Salud Mental - Lista de Terapeutas</title>
-    <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
-    <link rel="stylesheet" href="../assets/css/styles.min.css" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logos/favicon.png') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" />
     <script>
         function confirmDelete(event) {
             if (!confirm("¿Estás seguro de que deseas eliminar este terapeuta?")) {
@@ -69,5 +69,4 @@
     </div>
     <!-- FIN DEL CONTENIDO -->
 </body>
-
 </html>

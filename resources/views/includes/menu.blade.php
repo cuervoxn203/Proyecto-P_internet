@@ -8,7 +8,7 @@
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="./index.html" class="text-nowrap logo-img">
-            <img src="../assets/images/logos/dark-logo.svg" width="180" alt="" />
+            <img src="{{asset('/assets/images/logos/dark-logo.svg')}}" width="180" alt="" />
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -41,47 +41,31 @@
 
             <!-- CATEGORIA -->
             <li class="sidebar-item">
-              <a class="sidebar-link" href="introducir pagina referencia" aria-expanded="false">
+              <a class="sidebar-link" href="{{ route("terapeutas.index") }}" aria-expanded="false">
                 <span>
                   <i class="ti ti-article"></i>
                 </span>
-                <span class="hide-menu">Menu 1</span>
+                <span class="hide-menu">Terapeutas</span>
               </a>
             </li>
 
             <!-- CATEGORIA -->
             <li class="sidebar-item">
-              <a class="sidebar-link" href="introducir pagina referencia" aria-expanded="false">
+              <a class="sidebar-link" href="{{ route("formularios.index") }}" aria-expanded="false">
                 <span>
                   <i class="ti ti-alert-circle"></i>
                 </span>
-                <span class="hide-menu">Menu 2</span>
+                <span class="hide-menu">Formularios</span>
               </a>
             </li>
 
             <!-- CATEGORIA -->
             <li class="sidebar-item">
-              <a class="sidebar-link" href="introducir pagina referencia" aria-expanded="false">
+              <a class="sidebar-link" href={{ route("consultas.index") }} aria-expanded="false">
                 <span>
                   <i class="ti ti-cards"></i>
                 </span>
-                <span class="hide-menu">Menu 3</span>
-              </a>
-            </li>
-
-            <!-- SUBCATEGORIA -->
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Plantilla</span>
-            </li>
-
-            <!-- CATEGORIA -->
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="./sample-page.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-aperture"></i>
-                </span>
-                <span class="hide-menu">Recursos</span>
+                <span class="hide-menu">Consultas</span>
               </a>
             </li>
           </ul>
@@ -108,7 +92,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  <img src="../assets/images/profile/mapache.jpg" alt="" width="50" height="50" class="rounded-circle" style="object-fit: cover">
+                  <img src={{asset('/assets/images/profile/mapache.jpg')}} alt="" width="50" height="50" class="rounded-circle" style="object-fit: cover">
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">
@@ -133,3 +117,9 @@
         </nav>
       </header>
       <!-- FIN DE LA CABECERA - PERFIL -->
+
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/sidebarmenu.js"></script>
+  <script src="../assets/js/app.min.js"></script>
+  <script src="../assets/libs/simplebar/dist/simplebar.js"></script>

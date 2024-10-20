@@ -1,15 +1,18 @@
+<!-- Inicio de la Plantilla -->
 <!doctype html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Seleccionar Formulario</title>
-    <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
-    <link rel="stylesheet" href="../assets/css/styles.min.css" />
+    <title>Salud Mental - Editar Terapeuta</title>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logos/favicon.png') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" />
 </head>
 
-<!-- INCLUIR EL MENU -->
-@include('includes.menu')
+<body>
+    <!-- Incluir el menú -->
+    @include('includes.menu')
 
 <!-- INICIO DEL CUERPO DEL CONTENIDO -->
 <body>
@@ -21,6 +24,11 @@
                 @if($formularios->isEmpty())
                     <p>No hay formularios disponibles en este momento.</p>
                 @else
+
+                @if(session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                @endif
+
                     <div class="table-responsive">
                         <table class="table text-nowrap mb-0 align-middle">
                             <thead class="text-dark fs-4">

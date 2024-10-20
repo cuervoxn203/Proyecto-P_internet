@@ -22,7 +22,7 @@
 <link href="{{ asset('index/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('index/assets/vendor/aos/aos.css') }}" rel="stylesheet">
 
-<!-- Custom CSS -->
+<!-- CSS -->
 <link href="{{ asset('index/assets/css/main.css') }}" rel="stylesheet">
 
 </head>

@@ -47,7 +47,8 @@ class FormularioController extends Controller
         $formulario->preguntas = json_encode($request->preguntas); // Guardar las preguntas como un JSON
         $formulario->save(); // Guardar en la base de datos
 
-        return redirect()->route('formularios.index');
+        return redirect()->route('formularios.index')->with('success', 'Formulario creado con éxito.');
+
     }
 
     /**

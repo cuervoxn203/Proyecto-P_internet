@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 // app/Models/Consulta.php
 class Consulta extends Model
 {
+    use HasFactory;
+
     protected $fillable = ['paciente', 'descripcion', 'fecha_hora', 'terapeuta_id'];
 
     // Relación con el modelo Terapeuta (muchos a 1)

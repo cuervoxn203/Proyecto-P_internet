@@ -16,12 +16,9 @@ class Terapeuta extends Model
         'especialidad', 
         'telefono',
     ];
-<<<<<<< HEAD
 
     public function consultas()
     {
         return $this->hasMany(Consulta::class);
     }
-=======
->>>>>>> 9594cb604ad9d9b423681a39404522ad72d1b395
 }

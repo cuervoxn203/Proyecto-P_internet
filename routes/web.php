@@ -1,12 +1,15 @@
 <?php
 
-use App\Http\Controllers\FormularioController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TerapeutaController;
 use App\Http\Controllers\ConsultaController;
+use App\Http\Controllers\FormularioController;
 
 
 
+// Ruta para la vista de bienvenida
+
+use App\Http\Controllers\MailTestController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +22,8 @@ use App\Http\Controllers\ConsultaController;
 */
 Route::get('/', function () {
     return view('welcome');
+
+
 });
 
 /*TERAPEUTAS VIEWS*/
@@ -32,13 +37,25 @@ Route::resource('formularios', FormularioController::class)->parameters(['formul
 Route::resource('consultas', ConsultaController::class);
 
 Route::middleware([
-    'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
+    // Ruta del dashboard
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    /* TERAPEUTAS VIEWS */
+    Route::resource('terapeutas', TerapeutaController::class);
+
+    /* FORMULARIOS VIEWS */
+    Route::resource('formularios', FormularioController::class)->parameters(['formularios' => 'formulario']);
+
+    /* CONSULTAS VIEWS */
+    Route::resource('consultas', ConsultaController::class);
+
+    Route::get('/test-email', [MailTestController::class, 'sendTestEmail']);
+
 });
 
 use App\Http\Controllers\AvisoController;

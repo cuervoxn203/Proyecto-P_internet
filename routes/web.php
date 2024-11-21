@@ -41,3 +41,7 @@ Route::middleware([
     })->name('dashboard');
 });
 
+use App\Http\Controllers\AvisoController;
+
+Route::get('/avisos/enviar', [AvisoController::class, 'index'])->name('avisos.index');
+Route::post('/avisos/enviar', [AvisoController::class, 'enviarAvisoGeneral'])->name('enviar.aviso.general');

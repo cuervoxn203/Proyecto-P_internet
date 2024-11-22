@@ -1,19 +1,9 @@
 <!-- Inicio de la Plantilla -->
-<!doctype html>
-<html lang="es">
+@extends('layouts.main')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Salud Mental - Editar Terapeuta</title>
-    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logos/favicon.png') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" />
-</head>
+@section('title', 'Consulta: ' . $consulta->paciente)
 
-<body>
-    <!-- Incluir el menú -->
-    @include('includes.menu')
-
+@section('content')
     <!-- CONTENIDO DEL PROGRAMA - INICIO -->
     <div class="container-fluid">
         <h5 class="card-title fw-semibold mb-4">Detalles de la consulta</h5>
@@ -23,7 +13,7 @@
                 <p class="card-text"><strong>Paciente:</strong> {{ $consulta->paciente }}</p>
                 <p class="card-text"><strong>Descripción:</strong> {{ $consulta->descripcion }}</p>
                 <p class="card-text"><strong>Fecha:</strong> {{ $consulta->fecha_hora }}</p>
-                
+
                 <!-- Detalles del Terapeuta asignado -->
                 <h5 class="card-title fw-semibold mb-4">Terapeuta asignado</h5>
                 @if($consulta->terapeuta)
@@ -49,5 +39,4 @@
         </div>
     </div>
     <!-- FIN DEL CONTENIDO -->
-</body>
-</html>
+@endsection

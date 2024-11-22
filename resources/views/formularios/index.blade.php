@@ -52,7 +52,9 @@
                                         <a href="{{ route('formularios.show', $formulario->id) }}">{{ $formulario->nombre }}</a>
                                     </td>
                                     <td>
-                                        <a href="{{ route('formularios.edit', $formulario->id) }}" class="btn btn-outline-info m-1">Editar</a>
+                                        @can('update', $formulario)
+                                            <a href="{{ route('formularios.edit', $formulario->id) }}" class="btn btn-outline-info m-1">Editar</a>
+                                        @endcan
                                     </td>
                                 </tr>
                                 @endforeach
@@ -60,7 +62,9 @@
                         </table>
                     </div>
                 @endif
-                <a href="{{ route('formularios.create') }}" class="btn btn-outline-success mt-3">Añadir nuevo formulario</a>
+                @can('create', App\Models\Formulario::class)
+                    <a href="{{ route('formularios.create') }}" class="btn btn-outline-success mt-3">Añadir nuevo formulario</a>
+                @endcan
             </div>
         </div>
     </div>

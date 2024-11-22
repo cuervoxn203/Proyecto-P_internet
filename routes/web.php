@@ -26,7 +26,8 @@ Route::resource('terapeutas', TerapeutaController::class);
 
 
 /*FORMULARIOS VIEWS*/
-Route::resource('formularios', FormularioController::class)->parameters(['formularios' => 'formulario']);
+Route::resource('formularios', FormularioController::class)
+    ->parameters(['formularios' => 'formulario']);
 
 /*CONSULTAS VIEWS*/
 Route::resource('consultas', ConsultaController::class);

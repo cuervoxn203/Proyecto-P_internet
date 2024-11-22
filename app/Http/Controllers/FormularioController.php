@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Formulario;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
 class FormularioController extends Controller
@@ -25,6 +26,8 @@ class FormularioController extends Controller
      */
     public function create()
     {
+        Gate::authorize('create', Formulario::class);
+
         return view('formularios.create');
     }
 
@@ -33,11 +36,13 @@ class FormularioController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('create', Formulario::class);
+
         $request->validate([
             'nombre' => 'required|string|max:255',
             'descripcion' => 'nullable|string',
-            'preguntas' => 'required|array', 
-            'preguntas.*' => 'required|string|max:255', 
+            'preguntas' => 'required|array',
+            'preguntas.*' => 'required|string|max:255',
         ]);
 
         // Crear un nuevo formulario
@@ -64,6 +69,8 @@ class FormularioController extends Controller
      */
     public function edit(Formulario $formulario)
     {
+        Gate::authorize('update', $formulario);
+
         return view('formularios.edit', compact('formulario'));
     }
 
@@ -72,11 +79,13 @@ class FormularioController extends Controller
      */
     public function update(Request $request, Formulario $formulario)
     {
+        Gate::authorize('update', $formulario);
+
         $request->validate([
             'nombre' => 'required|string|max:255',
             'descripcion' => 'nullable|string',
-            'preguntas' => 'required|array', 
-            'preguntas.*' => 'required|string|max:255', 
+            'preguntas' => 'required|array',
+            'preguntas.*' => 'required|string|max:255',
         ]);
 
         // Actualiza el formulario
@@ -93,6 +102,8 @@ class FormularioController extends Controller
      */
     public function destroy(Formulario $formulario)
     {
+        Gate::authorize('delete', $formulario);
+
         $formulario->delete();
         return redirect()->route('formularios.index');
     }

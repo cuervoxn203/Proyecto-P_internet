@@ -39,15 +39,18 @@
 
                 <!-- Acciones -->
                 <div class="d-flex">
-                    <a href="{{ route('formularios.edit', $formulario->id) }}" class="btn btn-outline-info me-2">Editar Formulario</a>
+                    @can('update', $formulario)
+                        <a href="{{ route('formularios.edit', $formulario->id) }}" class="btn btn-outline-info me-2">Editar Formulario</a>
+                    @endcan
                     <a href="{{ route('formularios.index') }}" class="btn btn-outline-secondary me-2">Volver a la Lista de Formularios</a>
-                    
                     <!-- Formulario para eliminar -->
-                    <form action="{{ route('formularios.destroy', $formulario->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este formulario?');">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-outline-danger">Eliminar Formulario</button>
-                    </form>
+                    @can('delete', $formulario)
+                        <form action="{{ route('formularios.destroy', $formulario->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este formulario?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-outline-danger">Eliminar Formulario</button>
+                        </form>
+                    @endcan
                 </div>
             </div>
         </div>

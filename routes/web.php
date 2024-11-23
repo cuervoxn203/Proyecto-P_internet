@@ -10,6 +10,8 @@ use App\Http\Controllers\FormularioController;
 // Ruta para la vista de bienvenida
 
 use App\Http\Controllers\MailTestController;
+
+use App\Http\Controllers\FileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,3 +64,6 @@ use App\Http\Controllers\AvisoController;
 
 Route::get('/avisos/enviar', [AvisoController::class, 'index'])->name('avisos.index');
 Route::post('/avisos/enviar', [AvisoController::class, 'enviarAvisoGeneral'])->name('enviar.aviso.general');
+Route::get('/files', [FileController::class, 'index'])->name('files.index');
+Route::delete('/files/{id}', [FileController::class, 'destroy'])->name('files.destroy');
+Route::post('/files/clean-orphans', [FileController::class, 'cleanOrphans'])->name('files.clean-orphans');

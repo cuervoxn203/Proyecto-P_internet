@@ -38,8 +38,11 @@
             </main>
         </div>
 
-        @stack('modals')
-
+        @stack('modals') <!-- Para modales si los usas -->
+        
         @livewireScripts
+
+        <!-- Aquí se inyectan los scripts adicionales -->
+        @stack('scripts')
     </body>
 </html>

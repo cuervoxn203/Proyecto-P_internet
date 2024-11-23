@@ -12,4 +12,10 @@
             </div>
         </div>
     </div>
+
+    <!-- Aquí es donde incluirás el script -->
+    @push('scripts')
+        <script src="{{ mix('js/app.js') }}"></script> <!-- Si usas el archivo app.js -->
+    @endpush
 </x-app-layout>
+

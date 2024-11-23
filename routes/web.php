@@ -4,8 +4,7 @@ use App\Http\Controllers\FormularioController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TerapeutaController;
 use App\Http\Controllers\ConsultaController;
-
-
+use App\Http\Controllers\RespuestasFormularioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +30,8 @@ Route::resource('formularios', FormularioController::class)
 
 /*CONSULTAS VIEWS*/
 Route::resource('consultas', ConsultaController::class);
+
+Route::resource('respuestas_formularios', RespuestasFormularioController::class);
 
 Route::middleware([
     'auth:sanctum',

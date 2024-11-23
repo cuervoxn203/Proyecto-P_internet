@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             FormularioSeeder::class,
             TerapeutaSeeder::class,
             ConsultaSeeder::class,
+            RespuestasFormularioSeeder::class,
         ]);
     }
 }

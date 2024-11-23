@@ -5,6 +5,12 @@ use App\Http\Controllers\TerapeutaController;
 use App\Http\Controllers\ConsultaController;
 use App\Http\Controllers\FormularioController;
 
+use App\Http\Controllers\ReporteController;
+
+
+use App\Http\Controllers\RecursoController;
+
+
 
 
 // Ruta para la vista de bienvenida
@@ -67,3 +73,5 @@ Route::post('/avisos/enviar', [AvisoController::class, 'enviarAvisoGeneral'])->n
 Route::get('/files', [FileController::class, 'index'])->name('files.index');
 Route::delete('/files/{id}', [FileController::class, 'destroy'])->name('files.destroy');
 Route::post('/files/clean-orphans', [FileController::class, 'cleanOrphans'])->name('files.clean-orphans');
+Route::resource('reportes', ReporteController::class);
+Route::resource('recursos', RecursoController::class);

@@ -2,6 +2,8 @@
 @extends('layouts.main')
 
 @section('title', 'Editar Consulta')
+
+@section('content')
     <!-- CONTENIDO DEL PROGRAMA - INICIO -->
     <div class="container-fluid">
         <h5 class="card-title fw-semibold mb-4">Editar Consulta para {{ $consulta->paciente }}</h5>

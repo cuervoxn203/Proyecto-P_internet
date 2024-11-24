@@ -8,17 +8,14 @@ use Illuminate\Auth\Access\Response;
 
 class FormularioPolicy
 {
-    /**
-        * Perform pre-authorization checks.
-    */
-    // public function before(User $user, string $ability): bool|null
-    // {
-    //     if ($user->isAdministrator()) {
-    //         return true;
-    //     }
+    public function before(User $user, string $ability): bool|null
+    {
+        if ($user->rol === 'Admin') {
+            return true;
+        }
 
-    //     return null;
-    // }
+        return null;
+    }
 
     /**
      * Determine whether the user can view any models.

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Terapeuta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class TerapeutaController extends Controller
 {
@@ -24,6 +25,7 @@ class TerapeutaController extends Controller
      */
     public function create()
     {
+        Gate::authorize('create', Terapeuta::class);
         return view('terapeutas.create'); // Vista para el formulario
     }
 
@@ -32,6 +34,7 @@ class TerapeutaController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('create', Terapeuta::class);
         // Validar los datos
         $validated = $request->validate([
             'nombre' => 'required|string|max:255|regex:/^[\pL\s]+$/u',
@@ -45,14 +48,14 @@ class TerapeutaController extends Controller
             'telefono.numeric' => 'El campo teléfono debe contener solo números.',
             'telefono.digits' => 'El campo teléfono debe tener exactamente 10 dígitos.', // Mensaje actualizado
         ]);
-    
+
         // Guardar los datos en la base de datos
         Terapeuta::create($validated);
-    
+
         // Redirigir con un mensaje de éxito
         return redirect()->route('terapeutas.index')->with('success', 'Terapeuta creado exitosamente');
     }
-    
+
 
     /**
      * Mostrar un terapeuta específico.
@@ -68,15 +71,17 @@ class TerapeutaController extends Controller
      */
     public function edit($id)
     {
+        Gate::authorize('update', Terapeuta::class);
         $terapeuta = Terapeuta::findOrFail($id); // Esto cargará el terapeuta correspondiente
         return view('terapeutas.edit', compact('terapeuta')); // Asegúrate de que la vista edit exista
     }
-    
+
     /**
      * Actualizar un terapeuta existente en la base de datos.
      */
     public function update(Request $request, Terapeuta $terapeuta)
     {
+        Gate::authorize('update', $terapeuta);
         // Validar los datos
         $validated = $request->validate([
             'nombre' => [
@@ -98,21 +103,22 @@ class TerapeutaController extends Controller
             'telefono.numeric' => 'El campo teléfono debe contener solo números.',
             'telefono.digits' => 'El campo teléfono debe tener exactamente 10 dígitos.',
         ]);
-        
+
         // Actualizar los datos en la base de datos
         $terapeuta->update($validated);
-        
+
         // Redirigir a la vista de índice con un mensaje de éxito
         return redirect()->route('terapeutas.index')->with('success', 'Terapeuta actualizado exitosamente');
     }
-    
-    
+
+
 
     /**
      * Eliminar un terapeuta de la base de datos.
      */
     public function destroy(Terapeuta $terapeuta)
     {
+        Gate::authorize('delete', $terapeuta);
         // Eliminar el terapeuta
         $terapeuta->delete();
 

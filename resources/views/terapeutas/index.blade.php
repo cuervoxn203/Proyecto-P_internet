@@ -26,8 +26,9 @@
         <h5 class="card-title fw-semibold mb-4">Lista de Terapeutas</h5>
         <div class="card">
             <div class="card-body">
-                <a href="{{ route('terapeutas.create') }}" class="btn btn-primary mb-3">Agregar Terapeuta</a>
-                
+                @can('create', App\Models\Terapeuta::class)
+                    <a href="{{ route('terapeutas.create') }}" class="btn btn-primary mb-3">Agregar Terapeuta</a>
+                @endcan
                 @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
@@ -53,12 +54,16 @@
                                 <td>{{ $terapeuta->telefono }}</td>
                                 <td>
                                     <a href="{{ route('terapeutas.show', $terapeuta->id) }}" class="btn btn-info">Ver</a>
-                                    <a href="{{ route('terapeutas.edit', $terapeuta->id) }}" class="btn btn-warning">Editar</a>
-                                    <form action="{{ route('terapeutas.destroy', $terapeuta->id) }}" method="POST" style="display:inline;" onsubmit="confirmDelete(event);">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Eliminar</button>
-                                    </form>
+                                    @can('update', $terapeuta)
+                                        <a href="{{ route('terapeutas.edit', $terapeuta->id) }}" class="btn btn-warning">Editar</a>
+                                    @endcan
+                                    @can('delete', $terapeuta)
+                                        <form action="{{ route('terapeutas.destroy', $terapeuta->id) }}" method="POST" style="display:inline;" onsubmit="confirmDelete(event);">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        </form>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach

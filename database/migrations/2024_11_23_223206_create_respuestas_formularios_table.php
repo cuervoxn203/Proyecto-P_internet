@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('formularios', function (Blueprint $table) {
+        Schema::create('respuestas_formularios', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')->unique(); //Deberia ser unico para evitar repeticion
-            $table->json('preguntas');
-            $table->text('descripcion')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('formulario_id')->constrained('formularios')->onDelete('cascade');
+            $table->json('respuestas');
+            $table->date('fecha');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('formularios');
+        Schema::dropIfExists('respuestas_formularios');
     }
 };

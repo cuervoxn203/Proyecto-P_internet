@@ -1,4 +1,4 @@
-<x-app-layout>
+{{-- <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
@@ -12,4 +12,14 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-app-layout> --}}
+
+@extends('layouts.main')
+
+@section('title', 'Dashboard')
+
+@section('content')
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <p>Hello, World!</p>
+    </div>
+@endsection

@@ -11,6 +11,7 @@ use App\Http\Controllers\RecursoController;
 use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\RespuestasFormularioController;
 use App\Http\Controllers\TerapeutaController;
+use App\Http\Controllers\UsuarioRecursoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,7 @@ Route::resource('consultas', ConsultaController::class);
 Route::resource('respuestas_formularios', RespuestasFormularioController::class);
 Route::resource('reportes', ReporteController::class);
 Route::resource('recursos', RecursoController::class);
+Route::resource('usuario_recursos', UsuarioRecursoController::class);
 
 // File management routes
 Route::get('/files', [FileController::class, 'index'])->name('files.index');

@@ -17,5 +17,9 @@ class Recurso extends Model
         'categoria',
         'fecha_creacion',
     ];
-    
+
+    public function usuarioRecurso()
+    {
+        return $this->hasMany(UsuarioRecurso::class);
+    }
 }

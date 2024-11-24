@@ -3,8 +3,9 @@
 @section('title', 'Responder Formulario')
 
 @section('content')
-<div class="container mt-4">
-    <h2>Responder Formulario: {{ $formulario->nombre }}</h2>
+<div class="container-fluid">
+    <div class="container mt-4">
+    <h2 class="card-title fw-semibold mb-4">Responder Formulario: {{ $formulario->nombre }}</h2>
 
     <form action="{{ route('respuestas_formularios.store') }}" method="POST">
         @csrf

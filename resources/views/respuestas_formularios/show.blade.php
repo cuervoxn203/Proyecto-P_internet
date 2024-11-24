@@ -3,18 +3,19 @@
 @section('title', 'Detalle de Respuesta')
 
 @section('content')
-<div class="container mt-4">
-    <h2>Detalle de Respuesta</h2>
+<div class="container-fluid">
+    <h5 class="card-title fw-semibold mb-4">Detalles de la Respuesta</h5>
+
 
     <div class="card">
         <div class="card-header">
-            <h3>Formulario: {{ $respuestasFormulario->formulario->nombre }}</h3>
+            <h3 class="card-title">Formulario: {{ $respuestasFormulario->formulario->nombre }}</h3>
         </div>
         <div class="card-body">
-            <p><strong>Usuario:</strong> {{ $respuestasFormulario->user->name }}</p>
-            <p><strong>Fecha:</strong> {{ $respuestasFormulario->fecha }}</p>
-            <h4>Respuestas:</h4>
-            <ul>
+            <p class="card-text"><strong>Usuario:</strong> {{ $respuestasFormulario->user->name }}</p>
+            <p class="card-text"><strong>Fecha:</strong> {{ $respuestasFormulario->fecha }}</p>
+            <h4 class="card-title fw-semibold mb-4">Respuestas:</h4>
+            <ul class="card-text">
                 @php
                     $preguntas = json_decode($respuestasFormulario->formulario->preguntas, true);
                     $respuestas = json_decode($respuestasFormulario->respuestas, true);

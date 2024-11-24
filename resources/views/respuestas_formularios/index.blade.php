@@ -3,19 +3,18 @@
 @section('title', 'Lista de Respuestas')
 
 @section('content')
-<div class="container mt-4">
+<div class="container-fluid">
+    <div class="container mt-4">
+    <h5 class="card-title fw-semibold mb-4">Respuestas</h5>
     @if(session('success')) <!-- No funciona? -->
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
     @endif
-
-    <h2>Lista de Respuestas</h2>
-
     @if($respuestas->isEmpty())
         <p>No hay respuestas disponibles.</p>
     @else
-        <table class="table table-bordered">
+        <table class="table">
             <thead>
                 <tr>
                     <th>ID</th>

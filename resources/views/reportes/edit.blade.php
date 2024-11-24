@@ -1,7 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
+    <div class="container">
     <h1>Editar Reporte</h1>
     <form action="{{ route('reportes.update', $reporte) }}" method="POST">
         @csrf

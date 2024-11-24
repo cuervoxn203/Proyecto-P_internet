@@ -12,7 +12,8 @@
     @include('includes.menu')
 
     <!-- Contenedor principal -->
-    <div class="container-fluid mt-4">
+    <div class="container-fluid">
+        <div class="container-fluid mt-4">
         <h5 class="card-title fw-semibold mb-4">Gestión de Archivos</h5>
 
         <!-- Formulario para subir archivos -->

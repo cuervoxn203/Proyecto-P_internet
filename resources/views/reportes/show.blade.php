@@ -1,9 +1,10 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="container">
-    <h1>Detalles del Reporte</h1>
-    <table class="table table-bordered">
+<div class="container-fluid">
+    <div class="container">
+    <h1 class="card-title fw-semibold mb-4">Detalles del Reporte</h1>
+    <table class="table">
         <tr>
             <th>ID</th>
             <td>{{ $reporte->id }}</td>

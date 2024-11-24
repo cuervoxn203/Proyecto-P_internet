@@ -3,14 +3,15 @@
 @section('title', 'Lista de Recursos de Usuario')
 
 @section('content')
-<div class="container mt-4">
+<div class="container-fluid">
+    <div class="container mt-4">
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
     @endif
 
-    <h2>Lista de Recursos de Usuario</h2>
+    <h2 class="card-title fw-semibold mb-4">Lista de Recursos de Usuario</h2>
 
     @if($recursos === null || $recursos->isEmpty())
         <p>No hay recursos disponibles.</p>

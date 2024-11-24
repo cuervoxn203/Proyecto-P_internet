@@ -67,6 +67,37 @@
                 </span>
                 <span class="hide-menu">Consultas</span>
               </a>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href={{ route("respuestas_formularios.index") }} aria-expanded="false">
+                <span>
+                  <i class="ti ti-book"></i>
+                </span>
+                <span class="hide-menu">Respuestas</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href={{ route("archivos.index") }} aria-expanded="false">
+                <span>
+                  <i class="ti ti-archive"></i>
+                </span>
+                <span class="hide-menu">Archivos</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href={{ route("usuario_recursos.index") }} aria-expanded="false">
+                <span>
+                  <i class="ti ti-box"></i>
+                </span>
+                <span class="hide-menu">Recursos</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href={{ route("reportes.index") }} aria-expanded="false">
+                <span>
+                  <i class="ti ti-checklist"></i>
+                </span>
+                <span class="hide-menu">Reportes</span>
+              </a>
             </li>
           </ul>
         </nav>

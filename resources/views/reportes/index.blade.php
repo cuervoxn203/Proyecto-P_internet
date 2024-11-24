@@ -1,8 +1,9 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="container">
-    <h1>Lista de Reportes</h1>
+<div class="container-fluid">
+    <div class="container">
+    <h1 class="card-title fw-semibold mb-4">Lista de Reportes</h1>
     <a href="{{ route('reportes.create') }}" class="btn btn-primary">Crear Reporte</a>
     <table class="table mt-3">
         <thead>

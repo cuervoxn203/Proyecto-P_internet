@@ -3,8 +3,9 @@
 @section('title', 'Editar Respuesta')
 
 @section('content')
-<div class="container mt-4">
-    <h2>Editar Respuesta: {{ $respuestasFormulario->formulario->nombre }}</h2>
+<div class="container-fluid">
+    <div class="container mt-4">
+    <h2 class="card-title fw-semibold mb-4">Editar Respuesta: {{ $respuestasFormulario->formulario->nombre }}</h2>
 
     <form action="{{ route('respuestas_formularios.update', $respuestasFormulario->id) }}" method="POST">
         @csrf

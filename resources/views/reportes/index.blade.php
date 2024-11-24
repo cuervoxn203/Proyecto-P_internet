@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
 <div class="container">
@@ -23,12 +23,16 @@
                     <td>{{ $reporte->fecha_generacion }}</td>
                     <td>
                         <a href="{{ route('reportes.show', $reporte) }}" class="btn btn-info btn-sm">Ver</a>
-                        <a href="{{ route('reportes.edit', $reporte) }}" class="btn btn-warning btn-sm">Editar</a>
-                        <form action="{{ route('reportes.destroy', $reporte) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                        </form>
+                        @can('update', $reporte)
+                            <a href="{{ route('reportes.edit', $reporte) }}" class="btn btn-warning btn-sm">Editar</a>
+                        @endcan
+                        @can('delete', $reporte)
+                            <form action="{{ route('reportes.destroy', $reporte) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                            </form>
+                        @endcan
                     </td>
                 </tr>
             @endforeach

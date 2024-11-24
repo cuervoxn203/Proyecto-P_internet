@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
             TerapeutaSeeder::class,
             ConsultaSeeder::class,
             RespuestasFormularioSeeder::class,
+            ReporteSeeder::class,
+            RecursoSeeder::class,
         ]);
     }
 }

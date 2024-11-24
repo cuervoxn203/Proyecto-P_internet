@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reporte;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ReporteController extends Controller
 {
@@ -39,11 +40,13 @@ class ReporteController extends Controller
 
     public function edit(Reporte $reporte)
     {
+        Gate::authorize('update', $reporte);
         return view('reportes.edit', compact('reporte'));
     }
 
     public function update(Request $request, Reporte $reporte)
     {
+        Gate::authorize('update', $reporte);
         $request->validate([
             'id_usuario' => 'required|exists:users,id',
             'datos_reporte' => 'required|json',
@@ -58,6 +61,7 @@ class ReporteController extends Controller
 
     public function destroy(Reporte $reporte)
     {
+        Gate::authorize('delete', $reporte);
         $reporte->delete();
         return redirect()->route('reportes.index')->with('success', 'Reporte eliminado exitosamente.');
     }

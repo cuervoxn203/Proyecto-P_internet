@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 
 // Detectar inactividad del usuario y manejar mensajes
 let timeout;
-const idleTime = 1 * 60 * 1000; // 1 minutos
+const idleTime = 60 * 60 * 1000; // 1 hora
 
 function resetTimer() {
     clearTimeout(timeout);

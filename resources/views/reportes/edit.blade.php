@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
 <div class="container">
@@ -29,7 +29,7 @@
 
         <div class="form-group mt-3">
             <label for="fecha_generacion">Fecha de Generación</label>
-            <input type="datetime-local" name="fecha_generacion" id="fecha_generacion" class="form-control" 
+            <input type="datetime-local" name="fecha_generacion" id="fecha_generacion" class="form-control"
                    value="{{ \Carbon\Carbon::parse($reporte->fecha_generacion)->format('Y-m-d\TH:i') }}" required>
         </div>
 

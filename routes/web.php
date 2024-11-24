@@ -9,7 +9,7 @@ use App\Http\Controllers\ReporteController;
 
 
 use App\Http\Controllers\RecursoController;
-
+use App\Http\Controllers\ArchivoController;
 
 
 
@@ -75,3 +75,9 @@ Route::delete('/files/{id}', [FileController::class, 'destroy'])->name('files.de
 Route::post('/files/clean-orphans', [FileController::class, 'cleanOrphans'])->name('files.clean-orphans');
 Route::resource('reportes', ReporteController::class);
 Route::resource('recursos', RecursoController::class);
+
+
+Route::get('/archivos', [ArchivoController::class, 'index'])->name('archivos.index');
+Route::post('/archivos/subir', [ArchivoController::class, 'subir'])->name('archivos.subir');
+Route::get('/archivos/descargar/{id}', [ArchivoController::class, 'descargar'])->name('archivos.descargar');
+Route::delete('/archivos/eliminar/{id}', [ArchivoController::class, 'eliminar'])->name('archivos.eliminar');

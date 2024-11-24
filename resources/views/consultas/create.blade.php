@@ -2,8 +2,6 @@
 @extends('layouts.main')
 
 @section('title', 'Crear Consulta')
-
-@section('content')
     <!-- CONTENIDO DEL PROGRAMA - INICIO -->
     <div class="container-fluid">
         <h5 class="card-title fw-semibold mb-4">Generar Consulta</h5>

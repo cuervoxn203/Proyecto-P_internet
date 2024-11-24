@@ -27,12 +27,16 @@
 
                 <!-- Botones para editar y eliminar -->
                 <div class="mt-3">
-                    <a href="{{ route('consultas.edit', $consulta->id) }}" class="btn btn-warning">Editar Consulta</a>
-                    <form action="{{ route('consultas.destroy', $consulta->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta consulta?');">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Eliminar Consulta</button>
-                    </form>
+                    @can('update', $consulta)
+                        <a href="{{ route('consultas.edit', $consulta->id) }}" class="btn btn-warning">Editar Consulta</a>
+                    @endcan
+                    @can('delete', $consulta)
+                        <form action="{{ route('consultas.destroy', $consulta->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta consulta?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Eliminar Consulta</button>
+                        </form>
+                    @endcan
                     <a href="{{ route('consultas.index') }}" class="btn btn-secondary">Volver a la lista</a>
                 </div>
             </div>

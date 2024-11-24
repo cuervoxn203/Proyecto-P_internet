@@ -15,12 +15,16 @@
                 <p class="card-text"><strong>Teléfono:</strong> {{ $terapeuta->telefono }}</p>
 
                 <div class="mt-3">
-                    <a href="{{ route('terapeutas.edit', $terapeuta->id) }}" class="btn btn-warning">Editar</a>
-                    <form action="{{ route('terapeutas.destroy', $terapeuta->id) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
-                    </form>
+                    @can('update', $terapeuta)
+                        <a href="{{ route('terapeutas.edit', $terapeuta->id) }}" class="btn btn-warning">Editar</a>
+                    @endcan
+                    @can('delete', $terapeuta)
+                        <form action="{{ route('terapeutas.destroy', $terapeuta->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    @endcan
                     <a href="{{ route('terapeutas.index') }}" class="btn btn-secondary">Volver a la lista</a>
                 </div>
             </div>

@@ -8,7 +8,9 @@
     <div class="container-fluid">
         <!-- Mostrar las consultas existentes -->
         <h5 class="card-title fw-semibold mb-4">Consultas Existentes</h5>
-        <a href="{{ route('consultas.create') }}" class="btn btn-primary mb-3">Generar una nueva consulta</a>
+        @can('create', App\Models\Consulta::class)
+            <a href="{{ route('consultas.create') }}" class="btn btn-primary mb-3">Generar una nueva consulta</a>
+        @endcan
         <div class="card">
             <div class="card-body">
                 @if($consultas->isEmpty())

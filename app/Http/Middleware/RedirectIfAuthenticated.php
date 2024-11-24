@@ -17,14 +17,17 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, string ...$guards): Response
     {
-        $guards = empty($guards) ? [null] : $guards;
+        // Si no se especifican guards, usa 'web' como predeterminado
+        $guards = empty($guards) ? ['web'] : $guards;
 
         foreach ($guards as $guard) {
+            // Verifica si el usuario ya está autenticado con el guard actual
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                return redirect(RouteServiceProvider::HOME); // Redirige al home si está autenticado
             }
         }
 
+        // Permite continuar al siguiente middleware si no está autenticado
         return $next($request);
     }
 }

@@ -1,7 +1,7 @@
 {{-- resources/views/dashboard.blade.php --}}
 @extends('layouts.main')
 
-@section('title', 'Dashboard')
+@section('title', 'Menu Principal')
 
 @section('content')
     <div class="container-fluid">

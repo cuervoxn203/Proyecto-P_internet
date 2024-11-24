@@ -1,7 +1,7 @@
 <!-- Inicio de la Plantilla -->
 @extends('layouts.main')
 
-@section('title', 'Index Formularios')
+@section('title', 'Formularios')
 
 @section('content')
 <div class="container-fluid">
@@ -41,9 +41,9 @@
                                 </td>
                                 <td>
                                     @can('update', $formulario)
-                                        <a href="{{ route('formularios.edit', $formulario->id) }}" class="btn btn-outline-info m-1">Editar</a>
+                                        <a href="{{ route('formularios.edit', $formulario->id) }}" class="btn btn-warning m-1">Editar</a>
                                     @endcan
-                                    <a href="{{ route('respuestas_formularios.create', ['formulario_id' => $formulario->id]) }}" class="btn btn-outline-primary m-1">Responder</a>
+                                    <a href="{{ route('respuestas_formularios.create', ['formulario_id' => $formulario->id]) }}" class="btn btn-success m-1">Responder</a>
                                 </td>
                             </tr>
                             @endforeach

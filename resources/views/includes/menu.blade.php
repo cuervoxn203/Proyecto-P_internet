@@ -123,23 +123,19 @@
               <li class="nav-item dropdown">
                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  <img src={{asset('/assets/images/profile/mapache.jpg')}} alt="" width="50" height="50" class="rounded-circle" style="object-fit: cover">
+                  <img src="{{ Auth::user()->profile_photo_url }}" alt="Foto de perfil" width="50" height="50" class="rounded-circle" style="object-fit: cover">       <!-- IMAGEN DE PERFIL -->
+
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                    <a href="{{ route('profile.show') }}" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-user fs-6"></i>
                       <p class="mb-0 fs-3">Perfil</p>
-                    </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-mail fs-6"></i>
-                      <p class="mb-0 fs-3">Cuenta</p>
-                    </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-list-check fs-6"></i>
-                      <p class="mb-0 fs-3">Consultas</p>
-                    </a>
-                    <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Cerrar Sesion</a>
+                    </a>                    
+                    <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                      @csrf
+                      <button type="submit" class="btn btn-outline-primary mx-3 mt-2 d-block">Cerrar Sesión</button>
+                  </form>
                   </div>
                 </div>
               </li>

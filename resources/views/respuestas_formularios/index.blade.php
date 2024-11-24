@@ -34,12 +34,16 @@
                         <td>{{ $respuesta->fecha }}</td>
                         <td>
                             <a href="{{ route('respuestas_formularios.show', $respuesta->id) }}" class="btn btn-info btn-sm">Ver</a>
-                            <a href="{{ route('respuestas_formularios.edit', $respuesta->id) }}" class="btn btn-warning btn-sm">Editar</a>
-                            <form action="{{ route('respuestas_formularios.destroy', $respuesta->id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar esta respuesta?')">Eliminar</button>
-                            </form>
+                            @can('update', $respuesta)
+                                <a href="{{ route('respuestas_formularios.edit', $respuesta->id) }}" class="btn btn-warning btn-sm">Editar</a>
+                            @endcan
+                            @can('delete', $respuesta)
+                                <form action="{{ route('respuestas_formularios.destroy', $respuesta->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar esta respuesta?')">Eliminar</button>
+                                </form>
+                            @endcan
                         </td>
                     </tr>
                 @endforeach

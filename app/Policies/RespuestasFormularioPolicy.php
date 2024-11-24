@@ -38,36 +38,36 @@ class RespuestasFormularioPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, RespuestasFormulario $respuestasFormulario): bool
+    public function update(User $user, RespuestasFormulario $respuestasFormulario): Response
     {
         //
-        return $user->is_admin;
+        return $user->rol === 'Admin' ? Response::allow() : Response::denyAsNotFound();
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, RespuestasFormulario $respuestasFormulario): bool
+    public function delete(User $user, RespuestasFormulario $respuestasFormulario): Response
     {
         //
-        return $user->is_admin;
+        return $user->rol === 'Admin' ? Response::allow() : Response::denyAsNotFound();
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, RespuestasFormulario $respuestasFormulario): bool
+    public function restore(User $user, RespuestasFormulario $respuestasFormulario): Response
     {
         //
-        return $user->is_admin;
+        return $user->rol === 'Admin' ? Response::allow() : Response::denyAsNotFound();
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, RespuestasFormulario $respuestasFormulario): bool
+    public function forceDelete(User $user, RespuestasFormulario $respuestasFormulario): Response
     {
         //
-        return $user->is_admin;
+        return $user->rol === 'Admin' ? Response::allow() : Response::denyAsNotFound();
     }
 }

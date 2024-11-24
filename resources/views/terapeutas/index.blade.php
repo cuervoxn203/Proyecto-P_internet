@@ -16,7 +16,6 @@
         }
     </script>
 </head>
-
 <body>
     <!-- Incluir el menú -->
     @include('includes.menu')

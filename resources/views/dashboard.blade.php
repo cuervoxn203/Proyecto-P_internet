@@ -1,5 +1,9 @@
-{{-- resources/views/dashboard.blade.php --}}
-@extends('layouts.main')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard') }}
+        </h2>
+    </x-slot>
 
 @section('title', 'Dashboard')
 
@@ -7,13 +11,8 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <p>Hello, World!</p>
+                <x-welcome />
             </div>
         </div>
     </div>
-
-    {{-- Additional script push from "Diego's branch" --}}
-    @push('scripts')
-        <script src="{{ mix('js/app.js') }}"></script>
-    @endpush
-@endsection
+</x-app-layout>

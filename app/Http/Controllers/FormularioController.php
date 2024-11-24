@@ -37,24 +37,26 @@ class FormularioController extends Controller
     public function store(Request $request)
     {
         Gate::authorize('create', Formulario::class);
-
+    
         $request->validate([
             'nombre' => 'required|string|max:255',
             'descripcion' => 'nullable|string',
             'preguntas' => 'required|array',
             'preguntas.*' => 'required|string|max:255',
         ]);
-
+    
         // Crear un nuevo formulario
         $formulario = new Formulario();
         $formulario->nombre = $request->nombre;
         $formulario->descripcion = $request->descripcion;
         $formulario->preguntas = json_encode($request->preguntas); // Guardar las preguntas como un JSON
         $formulario->save(); // Guardar en la base de datos
-
-        return redirect()->route('formularios.index')->with('success', 'Formulario creado con éxito.');
-
-    }
+    
+        // Usar session para almacenar el mensaje
+        session()->flash('success', 'Formulario creado con éxito.');
+    
+        return redirect()->route('formularios.index');
+    }    
 
     /**
      * Display the specified resource.

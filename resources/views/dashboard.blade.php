@@ -11,7 +11,7 @@
             </div>
             <div class="card-body">
                 <p class="lead">A continuación te damos un resumen de tu actividad:</p>
-                
+
                 <div class="row">
                     <!-- Nombre -->
                     <div class="col-md-6 mb-3">
@@ -77,13 +77,93 @@
                 </div>
 
                 <hr>
-
+                <!-- Reportes recientes -->
+                <div class="col-md-12 mb-3">
+                    <div class="card">
+                        <div class="card-header bg-light">
+                            <strong>Reportes Recientes</strong>
+                        </div>
+                        @if ($reportes_recientes !== null && count($reportes_recientes) > 0)
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    @foreach ($reportes_recientes as $index => $reporte)
+                                        @if ($index < 7)
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <strong>{{ $reporte->tipo_reporte }}</strong>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <span>{{ $reporte->descripcion }}</span>
+                                                    </div>
+                                                    <div class="col-md-4 text-right">
+                                                        <a href="{{ route('reportes.show', $reporte->id) }}" class="btn btn-primary btn-sm">Ver Reporte</a>
+                                                        <br>
+                                                        <span class="text-muted">{{ \Carbon\Carbon::parse($reporte->created_at)->diffForHumans() }}</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        @else
+                                            @break
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @else
+                        <div class="card-body">
+                            <p class="card-text text-center">No se han generado reportes recientemente.</p>
+                            <p class="text-info text-center">¿Nuevo aquí? Estos se generan automáticamente cada día. ¡Y siempre puedes ver los últimos 7!</p>
+                        </div>
+                        @endif
+                    </div>
+                </div>
+                <hr>
+                <!-- Formularios contestados recientemente -->
+                <div class="col-md-12 mb-3">
+                    <div class="card">
+                        <div class="card-header bg-light">
+                            <strong>Formularios Contestados Recientes</strong>
+                        </div>
+                        @if ($respuestas_recientes !== null && count($respuestas_recientes) > 0)
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    @foreach ($respuestas_recientes as $index => $respuesta)
+                                        @if ($index < 7)
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <strong>{{ $respuesta->formulario->nombre }}</strong>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <span>{{ $respuesta->formulario->descripcion }}</span>
+                                                    </div>
+                                                    <div class="col-md-4 text-right">
+                                                        <a href="{{ route('respuestas_formularios.show', $respuesta->id) }}" class="btn btn-primary btn-sm">Ver Respuestas</a>
+                                                        <br>
+                                                        <span class="text-muted">{{ \Carbon\Carbon::parse($respuesta->created_at)->diffForHumans() }}</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        @else
+                                            @break
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @else
+                        <div class="card-body">
+                            <p class="card-text text-center">No se han generado reportes recientemente.</p>
+                            <p class="text-info text-center">¿Nuevo aquí? Comienza contestando algunos de nuestros formularios creados por especialistas. ¡Y siempre puedes ver los últimos 7!</p>
+                        </div>
+                        @endif
+                    </div>
+                </div>
+                <hr>
                 <p class="text-muted">Si tienes alguna duda, no dudes en contactarnos.</p>
             </div>
         </div>
     </div>
 
-    {{-- Additional script push from "Diego's branch" --}}
     @push('scripts')
         <script src="{{ mix('js/app.js') }}"></script>
     @endpush

@@ -12,6 +12,7 @@ use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\RespuestasFormularioController;
 use App\Http\Controllers\TerapeutaController;
 use App\Http\Controllers\UsuarioRecursoController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,7 +61,14 @@ Route::middleware([
 ])->group(function () {
     // Dashboard
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $user = Auth::user();
+        $reportes_recientes = $user->reportes->filter(function ($reporte) {
+            return $reporte->created_at >= now()->subDays(7);
+        });
+        $respuestas_recientes = $user->respuestasFormulario->filter(function ($respuesta) {
+            return $respuesta->created_at >= now()->subDays(7);
+        });
+        return view('dashboard', compact('reportes_recientes', 'respuestas_recientes'));
     })->name('dashboard');
 
     Route::resource('terapeutas', TerapeutaController::class);

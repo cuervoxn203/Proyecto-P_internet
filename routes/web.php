@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\FormularioController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfesionalController;
-
+use App\Http\Controllers\TerapeutaController;
+use App\Http\Controllers\ConsultaController;
+use App\Http\Controllers\RespuestasFormularioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +16,23 @@ use App\Http\Controllers\ProfesionalController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('profesional', ProfesionalController::class)->parameters([
-    'profesional' => 'profesional'
-]);
-Route::resource('formularios', FormularioController::class)->parameters(['formularios' => 'formulario']);
+/*TERAPEUTAS VIEWS*/
+Route::resource('terapeutas', TerapeutaController::class);
+
+
+/*FORMULARIOS VIEWS*/
+Route::resource('formularios', FormularioController::class)
+    ->parameters(['formularios' => 'formulario']);
+
+/*CONSULTAS VIEWS*/
+Route::resource('consultas', ConsultaController::class);
+
+Route::resource('respuestas_formularios', RespuestasFormularioController::class);
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

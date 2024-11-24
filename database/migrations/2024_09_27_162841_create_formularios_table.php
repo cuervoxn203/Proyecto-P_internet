@@ -17,6 +17,7 @@ return new class extends Migration
             $table->json('preguntas');
             $table->text('descripcion')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

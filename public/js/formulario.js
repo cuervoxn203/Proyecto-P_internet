@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     const preguntasContainer = document.getElementById('preguntas-container');
     const btnAgregarPregunta = document.getElementById('agregar-pregunta');
+    const formCrear = document.getElementById('form-crear'); // Obtener el formulario de creación
+    const formEditar = document.getElementById('form-editar'); // Obtener el formulario de edición
     let preguntas = []; // Arreglo para mantener el control de las preguntas
 
     // Inicializar las preguntas desde el input existente, si hay preguntas cargadas
@@ -15,11 +17,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         preguntas.forEach((pregunta, index) => {
             const nuevoDiv = document.createElement('div');
-            nuevoDiv.classList.add('form-group', 'pregunta-item');
+            nuevoDiv.classList.add('mb-3', 'd-flex', 'align-items-center', 'pregunta-item');
 
             const nuevoLabel = document.createElement('label');
             nuevoLabel.setAttribute('for', `pregunta_${index}`);
             nuevoLabel.textContent = `Pregunta ${index + 1}:`;
+            nuevoLabel.classList.add('form-label', 'me-3');
 
             const nuevoInput = document.createElement('input');
             nuevoInput.setAttribute('type', 'text');
@@ -32,9 +35,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const btnEliminar = document.createElement('button');
             btnEliminar.setAttribute('type', 'button');
-            btnEliminar.classList.add('btn', 'btn-danger', 'btn-eliminar');
+            btnEliminar.classList.add('btn', 'btn-outline-danger', 'ms-2', 'btn-eliminar');
             btnEliminar.textContent = 'Eliminar';
-            btnEliminar.style.marginLeft = '10px';
 
             btnEliminar.addEventListener('click', function () {
                 preguntas.splice(index, 1); // Eliminar la pregunta del arreglo
@@ -64,4 +66,20 @@ document.addEventListener('DOMContentLoaded', function () {
             preguntas[index] = event.target.value; // Actualizar el arreglo con el nuevo valor
         }
     });
+
+    // Validación antes de enviar el formulario
+    const validateForm = (event) => {
+        if (preguntas.length === 0) {
+            event.preventDefault(); // Prevenir el envío del formulario
+            alert('Por favor, añade al menos una pregunta antes de guardar el formulario.'); // Mensaje de alerta
+        }
+    };
+
+    if (formCrear) {
+        formCrear.addEventListener('submit', validateForm); // Validar en el formulario de creación
+    }
+    
+    if (formEditar) {
+        formEditar.addEventListener('submit', validateForm); // Validar en el formulario de edición
+    }
 });

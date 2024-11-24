@@ -25,7 +25,7 @@
 
             <!-- CATEGORIA -->
             <li class="sidebar-item">
-              <a class="sidebar-link" href="referencia a index" aria-expanded="false">
+              <a class="sidebar-link" href="{{ route('dashboard') }}" aria-expanded="false">
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>

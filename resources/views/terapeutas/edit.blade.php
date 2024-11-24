@@ -1,19 +1,9 @@
 <!-- Inicio de la Plantilla -->
-<!doctype html>
-<html lang="es">
+@extends('layouts.main')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Salud Mental - Editar Terapeuta</title>
-    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logos/favicon.png') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" />
-</head>
+@section('title', 'Editar Terapeuta')
 
-<body>
-    <!-- Incluir el menú -->
-    @include('includes.menu')
-
+@section('content')
     <!-- CONTENIDO DEL PROGRAMA - INICIO -->
     <div class="container-fluid">
         <h5 class="card-title fw-semibold mb-4">Editar Terapeuta</h5>
@@ -63,6 +53,4 @@
 
     <!-- Scripts de Bootstrap (si es necesario) -->
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-</body>
-
-</html>
+@endsection

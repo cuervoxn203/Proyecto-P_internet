@@ -1,24 +1,16 @@
 <!-- Inicio de la Plantilla -->
-<!doctype html>
-<html lang="es">
+@extends('layouts.main')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Salud Mental - Editar Terapeuta</title>
-    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logos/favicon.png') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" />
-</head>
+@section('title', 'Consultas')
 
-<body>
-    <!-- Incluir el menú -->
-    @include('includes.menu')
-
+@section('content')
     <!-- CONTENIDO DEL PROGRAMA - INICIO -->
     <div class="container-fluid">
         <!-- Mostrar las consultas existentes -->
         <h5 class="card-title fw-semibold mb-4">Consultas Existentes</h5>
-        <a href="{{ route('consultas.create') }}" class="btn btn-primary mb-3">Generar una nueva consulta</a>
+        @can('create', App\Models\Consulta::class)
+            <a href="{{ route('consultas.create') }}" class="btn btn-primary mb-3">Generar una nueva consulta</a>
+        @endcan
         <div class="card">
             <div class="card-body">
                 @if($consultas->isEmpty())
@@ -28,7 +20,7 @@
                 @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
-                
+
                     <table class="table">
                         <thead>
                             <tr>
@@ -63,5 +55,4 @@
         </div>
     </div>
     <!-- FIN DEL CONTENIDO -->
-</body>
-</html>
+@endsection

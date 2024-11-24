@@ -1,19 +1,7 @@
 <!-- Inicio de la Plantilla -->
-<!doctype html>
-<html lang="es">
+@extends('layouts.main')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Salud Mental - Editar Terapeuta</title>
-    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logos/favicon.png') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" />
-</head>
-
-<body>
-    <!-- Incluir el menú -->
-    @include('includes.menu')
-
+@section('title', 'Editar Consulta')
     <!-- CONTENIDO DEL PROGRAMA - INICIO -->
     <div class="container-fluid">
         <h5 class="card-title fw-semibold mb-4">Editar Consulta para {{ $consulta->paciente }}</h5>
@@ -23,7 +11,7 @@
                 <form action="{{ route('consultas.update', $consulta->id) }}" method="POST">
                     @csrf
                     @method('PUT') <!-- Método PUT para la actualización -->
-                    
+
                     <!-- Nombre del Paciente -->
                     <div class="mb-3">
                         <label for="paciente" class="form-label">Nombre del Paciente</label>
@@ -62,5 +50,4 @@
         </div>
     </div>
     <!-- FIN DEL CONTENIDO -->
-</body>
-</html>
+@endsection

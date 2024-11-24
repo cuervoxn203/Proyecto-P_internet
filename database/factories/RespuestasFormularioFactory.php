@@ -17,11 +17,10 @@ class RespuestasFormularioFactory extends Factory
     public function definition(): array
     {
         return [
-            //
-        'user_id' => \App\Models\User::factory(),
-        'formulario_id' => \App\Models\Formulario::factory(),
-        'respuestas' => $this->faker->json(),
-        'fecha' => $this->faker->date(),
+            'user_id' => \App\Models\User::factory(),
+            'formulario_id' => \App\Models\Formulario::factory(),
+            'respuestas' => json_encode($this->faker->words(5)), // Generate a JSON string
+            'fecha' => $this->faker->date(),
         ];
     }
 }

@@ -12,4 +12,9 @@ class Formulario extends Model
     use SoftDeletes;
 
     protected $fillable = ['nombre', 'preguntas', 'descripcion'];
+
+    public function respuestasFormulario()
+    {
+        return $this->hasMany(RespuestasFormulario::class);
+    }
 }

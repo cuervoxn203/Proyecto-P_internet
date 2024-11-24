@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Formulario;
 use App\Models\RespuestasFormulario;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
@@ -13,16 +14,19 @@ class RespuestasFormularioController extends Controller
      */
     public function index()
     {
-        $respuestas = RespuestasFormulario::all();
+        $respuestas = auth()->user()->respuestasFormulario;
         return view('respuestas_formularios.index', compact('respuestas'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('respuestas_formularios.create');
+        $formulario_id = $request->query('formulario_id');
+        $formulario = Formulario::findOrFail($formulario_id);
+        $preguntas = json_decode($formulario->preguntas, true);
+        return view('respuestas_formularios.create', compact('formulario', 'preguntas'));
     }
 
     /**
@@ -33,13 +37,17 @@ class RespuestasFormularioController extends Controller
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'formulario_id' => 'required|exists:formularios,id',
-            'respuestas' => 'required|json',
+            'respuestas' => 'required|array',
+            'respuestas.*' => 'required|string',
             'fecha' => 'required|date',
         ]);
 
-        RespuestasFormulario::create($request->all());
+        $data = $request->all();
+        $data['respuestas'] = json_encode($request->input('respuestas'));
 
-        return redirect()->route('respuestas_formularios.index');
+        RespuestasFormulario::create($data);
+
+        return redirect()->route('respuestas_formularios.index')->with('success', 'Respuestas guardadas correctamente.');
     }
 
     /**

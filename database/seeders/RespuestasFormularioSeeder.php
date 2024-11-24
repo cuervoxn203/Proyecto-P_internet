@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Database\Factories\RespuestasFormularioFactory;
+use App\Models\RespuestasFormulario;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +14,6 @@ class RespuestasFormularioSeeder extends Seeder
     public function run(): void
     {
         //
-        RespuestasFormularioFactory::factory()->count(10)->create();
+        RespuestasFormulario::factory()->count(20)->create();
     }
 }

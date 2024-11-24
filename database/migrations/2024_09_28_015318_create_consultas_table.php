@@ -14,7 +14,9 @@ class CreateConsultasTable extends Migration
     {
         Schema::create('consultas', function (Blueprint $table) {
             $table->id();
-            $table->string('paciente'); // Nombre del paciente
+            $table->foreignId('paciente_id')
+                  ->constrained('users')
+                  ->onDelete('cascade');
             $table->text('descripcion'); // Descripción de la consulta
             $table->dateTime('fecha_hora'); // Fecha y hora de la consulta
 

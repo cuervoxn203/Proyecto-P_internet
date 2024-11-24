@@ -38,10 +38,10 @@ class ReportePolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(User $user): Response
     {
         //
-        return true;
+        return $user->rol === 'Admin' ? Response::allow() : Response::denyAsNotFound();
     }
 
     /**

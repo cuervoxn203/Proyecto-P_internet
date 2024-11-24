@@ -16,11 +16,13 @@ class ReporteController extends Controller
 
     public function create()
     {
+        Gate::authorize('create', Reporte::class);
         return view('reportes.create');
     }
 
     public function store(Request $request)
     {
+        Gate::authorize('create', Reporte::class);
         $request->validate([
             'id_usuario' => 'required|exists:users,id',
             'datos_reporte' => 'required|json',

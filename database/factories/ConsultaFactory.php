@@ -18,7 +18,7 @@ class ConsultaFactory extends Factory
     public function definition(): array
     {
         return [
-            'paciente' => $this->faker->name,
+            'paciente_id' => \App\Models\User::factory(),
             'descripcion' => $this->faker->paragraph,
             'fecha_hora' => $this->faker->dateTime,
             'terapeuta_id' => Terapeuta::factory(),

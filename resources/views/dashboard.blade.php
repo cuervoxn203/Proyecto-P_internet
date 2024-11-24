@@ -154,6 +154,9 @@
                         <div class="card-body">
                             <p class="card-text text-center">No se han generado reportes recientemente.</p>
                             <p class="text-info text-center">¿Nuevo aquí? Comienza contestando algunos de nuestros formularios creados por especialistas. ¡Y siempre puedes ver los últimos 7!</p>
+                            <p class="text-center">
+                                <a href="{{ route('formularios.index') }}" class="btn btn-secondary">Comenzar a contestar</a>
+                            </p>
                         </div>
                         @endif
                     </div>

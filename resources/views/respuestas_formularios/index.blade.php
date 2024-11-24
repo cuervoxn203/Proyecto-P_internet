@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container mt-4">
-    @if(session('success'))
+    @if(session('success')) <!-- No funciona? -->
         <div class="alert alert-success">
             {{ session('success') }}
         </div>

@@ -10,7 +10,12 @@ class Consulta extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['paciente', 'descripcion', 'fecha_hora', 'terapeuta_id'];
+    protected $fillable = ['paciente_id', 'descripcion', 'fecha_hora', 'terapeuta_id'];
+
+    public function paciente()
+    {
+        return $this->belongsTo(User::class, 'paciente_id')->where('rol', 'user');
+    }
 
     // Relación con el modelo Terapeuta (muchos a 1)
     public function terapeuta()

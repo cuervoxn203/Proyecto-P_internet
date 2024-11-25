@@ -10,7 +10,7 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title fw-semibold mb-4">Paciente</h5>
-                <p class="card-text"><strong>Paciente:</strong> {{ $consulta->paciente }}</p>
+                <p class="card-text"><strong>Paciente:</strong> {{ $consulta->paciente->name }}</p>
                 <p class="card-text"><strong>Descripción:</strong> {{ $consulta->descripcion }}</p>
                 <p class="card-text"><strong>Fecha:</strong> {{ $consulta->fecha_hora }}</p>
 

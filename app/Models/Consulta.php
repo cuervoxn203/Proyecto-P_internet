@@ -14,7 +14,7 @@ class Consulta extends Model
 
     public function paciente()
     {
-        return $this->belongsTo(User::class, 'paciente_id')->where('rol', 'user');
+        return $this->belongsTo(User::class, 'paciente_id');
     }
 
     // Relación con el modelo Terapeuta (muchos a 1)

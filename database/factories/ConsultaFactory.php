@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Terapeuta;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\App;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Consulta>
@@ -21,7 +22,7 @@ class ConsultaFactory extends Factory
             'paciente_id' => \App\Models\User::factory(),
             'descripcion' => $this->faker->paragraph,
             'fecha_hora' => $this->faker->dateTime,
-            'terapeuta_id' => Terapeuta::factory(),
+            'terapeuta_id' => \App\Models\Terapeuta::factory(),
             'created_at' => now(),
             'updated_at' => now(),
         ];

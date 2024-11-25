@@ -16,7 +16,6 @@ class ConsultaController extends Controller
     {
         // Obtén todas las consultas con el terapeuta asociado
         $consultas = Consulta::with('terapeuta')->get();
-
         // Pasar las consultas a la vista
         return view('consultas.index', compact('consultas'));
     }
@@ -41,14 +40,14 @@ class ConsultaController extends Controller
         Gate::authorize('create', Consulta::class);
         // Validacion
         $request->validate([
-            'paciente' => 'required|string|max:255',
+            'paciente_id' => 'required|exists:users,id',
             'descripcion' => 'required|string',
             'fecha_hora' => 'required|date',
             'terapeuta_id' => 'required|exists:terapeutas,id',
         ]);
 
         Consulta::create([
-            'paciente' => $request->paciente,
+            'paciente_id' => $request->paciente_id,
             'descripcion' => $request->descripcion,
             'fecha_hora' => $request->fecha_hora,
             'terapeuta_id' => $request->terapeuta_id,
@@ -94,12 +93,11 @@ class ConsultaController extends Controller
         Gate::authorize('update', Consulta::class);
         // Validar los datos recibidos
         $request->validate([
-            'paciente' => 'required|string|max:255',
+            'paciente_id' => 'required|exists:users,id',
             'descripcion' => 'required|string',
             'fecha_hora' => 'required|date',
-            'terapeuta_id' => 'nullable|exists:terapeutas,id', // Asegurarse que el terapeuta existe
+            'terapeuta_id' => 'required|exists:terapeutas,id',
         ]);
-
         // Encontrar la consulta y actualizarla
         $consulta = Consulta::findOrFail($id);
         $consulta->update($request->all());

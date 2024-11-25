@@ -2,9 +2,11 @@
 @extends('layouts.main')
 
 @section('title', 'Editar Consulta')
+
+@section('content')
     <!-- CONTENIDO DEL PROGRAMA - INICIO -->
     <div class="container-fluid">
-        <h5 class="card-title fw-semibold mb-4">Editar Consulta para {{ $consulta->paciente }}</h5>
+        <h5 class="card-title fw-semibold mb-4">Editar Consulta para {{ $consulta->paciente->name }}</h5>
         <div class="card">
             <div class="card-body">
                 <!-- Formulario para editar la consulta -->
@@ -14,8 +16,8 @@
 
                     <!-- Nombre del Paciente -->
                     <div class="mb-3">
-                        <label for="paciente" class="form-label">Nombre del Paciente</label>
-                        <input type="text" class="form-control" id="paciente" name="paciente" value="{{ $consulta->paciente }}" required>
+                        <label for="paciente" class="form-label">ID del Paciente</label>
+                        <input type="text" class="form-control" id="paciente" name="paciente" value="{{ $consulta->paciente->id }}" required>
                     </div>
 
                     <!-- Descripción de la Consulta -->
